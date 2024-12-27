@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vintage Leather Boots - Product Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000; /* Dark black background */
+            color: #fff; /* White text for contrast */
+            overflow-x: hidden;
+            margin: 0;
+            height: 100%;
+            animation: fadeIn 3s ease-out; /* Apply slower fade-in animation */
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Header */
+        header {
+            background-color: #000000; /* Black background for header */
+            width: 100%;
+            padding: 60px 20px; /* Reduced padding for smaller header */
+            text-align: center;
+            color: #f39c12; /* Gold color for text */
+            font-size: 3.5em; /* Smaller header text */
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            animation: fadeIn 5s ease-out; /* Apply slower fade-in animation */
+            background: linear-gradient(45deg, #f39c12, #bdc3c7); /* Gold to silver gradient */
+            -webkit-background-clip: text; /* Clip the background to the text */
+            color: transparent; /* Make text transparent to show gradient */
+        }
+
+        /* Product Section */
+        .product-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 150px 20px; /* Increased padding for bigger image */
+            background-color: #000000; /* Black background for product section */
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 70px;
+            position: relative; /* Required for background image */
+            overflow: hidden;
+            animation: fadeIn 5s ease-out;
+        }
+
+        .product-section .product-info {
+            position: absolute;
+            z-index: 10;
+            color: #fff;
+            padding: 20px;
+            text-align: left;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay to make text readable */
+        }
+
+        .product-section .product-info h2 {
+            font-size: 4.5em; /* Larger title size */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .product-section .product-info p {
+            font-size: 2em; /* Larger description text */
+            margin-bottom: 20px;
+            color: #ccc; /* Light gray for description */
+        }
+
+        .product-section .description-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure image covers the section */
+            opacity: 0.6; /* Make the image slightly transparent */
+        }
+
+        /* Other Sections */
+        .description-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 40px; /* Reduced padding for smaller sections */
+            background-color: #000000; /* Black background */
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 70px;
+            width: 100%;
+            transition: transform 0.5s ease-out;
+            opacity: 0; /* Initially hidden */
+        }
+
+        .description-section.visible {
+            opacity: 1;
+            animation: fadeIn 7s ease-out; /* Apply slower fade-in animation */
+        }
+
+        .description-section:hover {
+            transform: scale(1.05);
+        }
+
+        .description-text {
+            flex: 1;
+            font-size: 1.8em; /* Smaller description text */
+            line-height: 1.6;
+            color: #ccc; /* Light gray for text */
+        }
+
+        .description-image {
+            flex: 1;
+            max-width: 450px;
+            height: auto;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-left: 40px;
+        }
+
+        .description-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Product Specifications */
+        .product-specifications {
+            width: 100%;
+            height: auto;
+            padding: 70px;
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+            background-color: #000000; /* Black background for specifications */
+            margin-top: 50px;
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.6);
+            opacity: 0; /* Initially hidden */
+        }
+
+        .product-specifications.visible {
+            opacity: 1;
+            animation: fadeIn 8s ease-out; /* Apply slower fade-in animation */
+        }
+
+        .product-specifications h3 {
+            font-size: 3em; /* Larger header for specifications */
+            margin-bottom: 30px;
+        }
+
+        .specifications-list {
+            list-style-type: none;
+            margin: 10px 0;
+            padding-left: 0;
+        }
+
+        .specifications-list li {
+            font-size: 2em; /* Larger specification text */
+            margin-bottom: 20px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .specifications-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #f39c12; /* Gold check mark */
+        }
+
+        /* Buy Button */
+        .buy-button {
+            background: linear-gradient(45deg, #000000, #f39c12);
+            color: white;
+            padding: 25px 50px;
+            font-size: 2em; /* Larger button text */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.5s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 50px;
+            animation: fadeIn 8s ease-out; /* Apply slower fade-in animation */
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(45deg, #f39c12, #000000);
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            margin-top: 50px;
+            width: 100%;
+            max-width: 1200px;
+            background-color: #000000; /* Black background */
+            padding: 70px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            opacity: 0; /* Initially hidden */
+        }
+
+        .reviews-section.visible {
+            opacity: 1;
+            animation: fadeIn 9s ease-out; /* Apply slower fade-in animation */
+        }
+
+        .reviews-section h3 {
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .review {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #333; /* Slightly lighter gray for reviews */
+            border-radius: 5px;
+        }
+
+        .review-author {
+            font-weight: bold;
+            font-size: 2em; /* Larger font for review author */
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-size: 1.6em; /* Larger review text */
+            color: #ccc;
+        }
+
+        /* Reduce font size for first description */
+        .description-section:first-of-type .description-text {
+            font-size: 1.5em; /* Reduced font size for the first description */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            Vintage Leather Boots - Product Details
+        </header>
+
+        <!-- Product Section (Image as Background) -->
+        <div class="product-section">
+            <!-- Product Info Section -->
+            <div class="product-info">
+                <h2 class="product-title">Vintage Leather Boots</h2>
+                <p class="product-description">
+                    Step into timeless style with our Vintage Leather Boots.
+            </div>
+            
+        </div>
+
+        <!-- Description Section 1 -->
+        <div class="description-section">
+            <div class="description-text">
+                <h3>Timeless Design</h3>
+                <p>Crafted with the finest vintage leather, these boots provide a rugged yet refined aesthetic. The durable construction ensures they can withstand the elements, making them ideal for outdoor activities and everyday wear.</p>
+            </div>
+            <div class="description-image">
+                <img src="C:\Users\smm90\Downloads\WhatsApp Image 2024-12-26 at 23.54.06_1eadfa1d.jpg" alt="Vintage Leather Detail">
+            </div>
+        </div>
+
+        <!-- Description Section 2 -->
+        <div class="description-section">
+            <div class="description-text">
+                <h3>Comfort and Durability</h3>
+                <p>The boots feature a padded footbed and a sturdy rubber sole for all-day comfort and traction. Whether you're hiking or strolling through the city, these boots offer unparalleled support and longevity.</p>
+            </div>
+            <div class="description-image">
+                <img src="C:\Users\smm90\Downloads\WhatsApp Image 2024-12-26 at 23.54.28_6fdf9d63.jpg" alt="Vintage Leather Features">
+            </div>
+        </div>
+
+        <!-- Product Specifications -->
+        <div class="product-specifications">
+            <h3>Product Specifications</h3>
+            <ul class="specifications-list">
+                <li>Material: Premium Vintage Leather</li>
+                <li>Insole: Padded for Comfort</li>
+                <li>Color: Brown</li>
+                <li>Available Sizes: 7 to 13</li>
+                <li>Country of Origin: USA</li>
+            </ul>
+        </div>
+
+        <!-- Buy Now Button -->
+        <a href="C:\Users\smm90\Downloads\buying page.html"><button class="buy-button">2249.99 - Buy Now</button></a>
+
+        <!-- Customer Reviews -->
+        <div class="reviews-section">
+            <h3>Customer Reviews</h3>
+            <div class="review">
+                <p class="review-author">John D.</p>
+                <p class="review-text">"These boots are a game-changer! They look amazing and feel just as good. Perfect for all kinds of outdoor adventures, and they only get better with age."</p>
+            </div>
+            <div class="review">
+                <p class="review-author">Sophia P.</p>
+                <p class="review-text">"The quality of the leather is incredible. I've had them for a few months now, and they just keep getting more comfortable. Worth every penny!"</p>
+            </div>
+            <div class="review">
+                <p class="review-author">Mike B.</p>
+                <p class="review-text">"I’ve worn these boots in all kinds of weather and they perform beautifully. Stylish and durable – a perfect combination!"</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Intersection Observer for Scroll Animations
+        const elements = document.querySelectorAll('.product-section, .description-section, .product-specifications, .reviews-section');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        elements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+
+</body>
+</html>

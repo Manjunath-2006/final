@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Premium Brand</title>
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0d0d0d; /* Dark black background */
+      overflow-x: hidden;
+      color: #f1f1f1; /* Light text for readability */
+      scroll-behavior: smooth; /* Smooth scrolling */
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Helvetica', sans-serif;
+    }
+
+    /* Royal Navigation Bar Styles */
+    .navbar {
+      background-color: #1e1e1e;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border-bottom: 4px solid #f1c40f; /* Gold accent on navbar */
+    }
+
+    .navbar ul {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .navbar ul li {
+      margin: 0 25px;
+    }
+
+    .navbar ul li a {
+      color: white;
+      font-size: 20px; /* Increased font size */
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+    }
+
+    .navbar ul li a:hover {
+      color: #f1c40f; /* Gold hover color */
+      border-bottom: 2px solid #f1c40f;
+      padding-bottom: 10px;
+    }
+
+    /* Hero Section (Intro Section) */
+    .intro {
+      text-align: center;
+      padding: 0 50px; /* Remove top and bottom padding */
+      background: linear-gradient(135deg, #5e72e4, #f1c40f);
+      color: white;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      margin-top: 0; /* Remove top margin */
+      position: relative;
+      height: 100vh; /* Full-screen height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Center content vertically */
+      align-items: center; /* Center content horizontally */
+    }
+
+    .intro h1 {
+      font-size: 90px; /* Larger heading */
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 5px; /* More space for grandeur */
+      animation: royalSlideIn 1s ease-out, slideInUp 1.5s ease-out; /* Combined animations */
+      color: #f1c40f; /* Gold color for a royal look */
+    }
+
+    .intro p {
+      font-size: 28px; /* Larger text */
+      margin-top: 20px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      animation: fadeInAndZoom 2s ease-out, textGlow 1.5s infinite alternate; /* Combined animations */
+      max-width: 1000px; /* Wider text area */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Premium Paragraphs Section */
+    .premium-paragraphs {
+      padding: 90px 50px; /* More padding */
+      background-color: #0d0d0d; /* Dark background */
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .intro-text {
+      margin-bottom: 60px;
+    }
+
+    .intro-text h2 {
+      font-size: 50px; /* Larger subheading */
+      color: #f1f1f1;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .intro-text p {
+      font-size: 22px; /* Larger paragraph text */
+      color: #bbb; /* Lighter color for text */
+      line-height: 1.8;
+      margin-bottom: 25px;
+      letter-spacing: 0.5px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Animated Products Section */
+    .animations {
+      padding: 100px 50px; /* More padding */
+      background-color: #0d0d0d; /* Dark background */
+      text-align: center;
+    }
+
+    .animated-products {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 50px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: royalFadeInUp 2s ease-out forwards;
+    }
+
+    .product {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      position: relative;
+      text-align: center;
+      margin-bottom: 40px; /* Increased space between products */
+      animation: fadeIn 2s ease-out;
+    }
+
+    .product img {
+      width: 300px; /* Larger product images */
+      height: 300px;
+      border-radius: 10px;
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .product h3 {
+      font-size: 28px; /* Larger product titles */
+      color: #f1f1f1;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    .product.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 100px 50px; /* More padding */
+      background-color: #0d0d0d; /* Dark background */
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-item {
+      display: inline-block;
+      width: 30%;
+      margin: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .testimonial-item img {
+      width: 120px; /* Slightly larger profile images */
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid #f1c40f;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-item p {
+      font-size: 22px; /* Larger testimonial text */
+      font-style: italic;
+      color: #bbb;
+    }
+
+    .testimonial-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer Section */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #1e1e1e;
+      color: white;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      border-top: 4px solid #f1c40f; /* Gold accent on footer */
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes royalFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes royalFadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes royalSlideIn {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* Additional Hero Section Animations */
+    @keyframes slideInUp {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInAndZoom {
+      0% {
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0d0d0d; /* Dark black background */
+      overflow-x: hidden;
+      color: #f1f1f1; /* Light text for readability */
+      scroll-behavior: smooth; /* Smooth scrolling */
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Helvetica', sans-serif;
+    }
+
+    /* Royal Navigation Bar Styles */
+    .navbar {
+      background-color: #1e1e1e;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border-bottom: 4px solid #f1c40f; /* Gold accent on navbar */
+    }
+
+    .navbar ul {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .navbar ul li {
+      margin: 0 25px;
+    }
+
+    .navbar ul li a {
+      color: white;
+      font-size: 20px; /* Increased font size */
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+    }
+
+    .navbar ul li a:hover {
+      color: #f1c40f; /* Gold hover color */
+      border-bottom: 2px solid #f1c40f;
+      padding-bottom: 10px;
+    }
+
+    /* Hero Section (Intro Section) */
+    .intro {
+      text-align: center;
+      padding: 0 50px; /* Remove top and bottom padding */
+      background: linear-gradient(135deg, #5e72e4, #f1c40f);
+      color: white;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      margin-top: 0; /* Remove top margin */
+      position: relative;
+      height: 100vh; /* Full-screen height */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Center content vertically */
+      align-items: center; /* Center content horizontally */
+    }
+
+    .intro h1 {
+      font-size: 90px; /* Larger heading */
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 5px; /* More space for grandeur */
+      animation: royalSlideIn 1s ease-out;
+      color: #f1c40f; /* Gold color for a royal look */
+    }
+
+    .intro p {
+      font-size: 28px; /* Larger text */
+      margin-top: 20px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      animation: fadeIn 2s ease-out;
+      max-width: 1000px; /* Wider text area */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Premium Paragraphs Section */
+    .premium-paragraphs {
+      padding: 90px 50px; /* More padding */
+      background-color: #0d0d0d; /* Dark background */
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .intro-text {
+      margin-bottom: 60px;
+    }
+
+    .intro-text h2 {
+      font-size: 50px; /* Larger subheading */
+      color: #f1f1f1;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .intro-text p {
+      font-size: 22px; /* Larger paragraph text */
+      color: #bbb; /* Lighter color for text */
+      line-height: 1.8;
+      margin-bottom: 25px;
+      letter-spacing: 0.5px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Animated Products Section */
+    .animations {
+      padding: 100px 50px; /* More padding */
+      background-color: #0d0d0d; /* Dark background */
+      text-align: center;
+    }
+
+    .animated-products {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 50px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: royalFadeInUp 2s ease-out forwards;
+    }
+
+    .product {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      position: relative;
+      text-align: center;
+      margin-bottom: 40px; /* Increased space between products */
+      animation: fadeIn 2s ease-out;
+    }
+
+    .product img {
+      width: 300px; /* Larger product images */
+      height: 300px;
+      border-radius: 10px;
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .product h3 {
+      font-size: 28px; /* Larger product titles */
+      color: #f1f1f1;
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    .product.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 100px 50px; /* More padding */
+      background-color: #0d0d0d; /* Dark background */
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-item {
+      display: inline-block;
+      width: 30%;
+      margin: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .testimonial-item img {
+      width: 120px; /* Slightly larger profile images */
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid #f1c40f;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-item p {
+      font-size: 22px; /* Larger testimonial text */
+      font-style: italic;
+      color: #bbb;
+    }
+
+    .testimonial-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer Section */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #1e1e1e;
+      color: white;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      border-top: 4px solid #f1c40f; /* Gold accent on footer */
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes royalFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes royalFadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes royalSlideIn {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar ul {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .animated-products {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product {
+        margin-bottom: 20px;
+      }
+
+      .product img {
+        width: 250px;
+        height: 250px;
+      }
+
+      .testimonial-item {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="C:\Users\smm90\Downloads\watch page - Copy.html">Watches</a></li>
+      <li><a href="C:\Users\smm90\Downloads\shoes.html">Shoes</a></li>
+      <li><a href="C:\Users\smm90\Downloads\sunglass.html">Sunglasses</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#partners">Partners</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section (Intro Section) -->
+  <section class="intro">
+    <h1>Mens Phase</h1>
+    <p>Where Luxury Meets Style – Explore our curated collection of premium watches, shoes, and sunglasses, designed to elevate your lifestyle.</p>
+  </section>
+
+  <!-- Premium Paragraphs Section -->
+  <section class="premium-paragraphs">
+    <div class="intro-text">
+      <h2>Welcome to MENS PHASE – Where Luxury Meets Style</h2>
+      <p>At Mens Phase, we believe in offering more than just products—we offer an experience. Our collection of premium watches, shoes, and sunglasses are crafted to perfection, designed to elevate your style and meet the highest standards of quality. Whether you're searching for the perfect timepiece to complement your sophistication, shoes that provide unparalleled comfort and class, or sunglasses that turn heads, Mens Phase is your ultimate destination. Join us in embracing the finest, because you deserve nothing less.</p>
+    </div>
+
+    <div class="intro-text">
+      <h2>Crafted for Those Who Appreciate Quality</h2>
+      <p>When it comes to luxury, it's all in the details. At Mens Phase, we source only the finest materials, ensuring every product exudes elegance and stands the test of time. From the precision-engineered watches to the meticulously designed shoes and sunglasses, we take pride in offering you products that are not just accessories but expressions of personal style. Our mission is simple: to bring you premium, timeless products that make every day extraordinary.</p>
+    </div>
+
+    <div class="intro-text">
+      <h2>The Perfect Blend of Innovation and Tradition</h2>
+      <p>Our brand stands at the intersection of innovation and tradition. We draw inspiration from classic styles, blending them with modern trends to create products that are both timeless and relevant. Every watch, every pair of shoes, and every pair of sunglasses we offer is designed to make a statement. Whether you're attending a gala, going on a weekend getaway, or simply enjoying a sunny day, our collections are made to accompany you in every moment with unmatched elegance.</p>
+    </div>
+  </section>
+
+  <!-- Animations Section -->
+  <section class="animations">
+    <h2>Our Premium Collections</h2>
+    <div class="animated-products">
+      <a href="C:\Users\smm90\Downloads\watch page - Copy.html">
+        <div class="product" id="watch-product">
+          <h3>Watches</h3>
+          <img src="C:\Users\smm90\Downloads\watch.jpg" alt="Watches">
+        </div>
+      </a>
+      <a href="C:\Users\smm90\Downloads\shoes.html">
+        <div class="product" id="shoes-product">
+          <h3>Shoes</h3>
+          <img src="C:\Users\smm90\Downloads\shoe.jpg" alt="Shoes">
+        </div>
+      </a>
+      <a href="C:\Users\smm90\Downloads\sunglass.html">
+        <div class="product" id="sunglasses-product">
+          <h3>Sunglasses</h3>
+          <img src="C:\Users\smm90\Downloads\sunglass.png" alt="Sunglasses" height="300px" width="300px">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-item">
+      <img src="C:\Users\smm90\Downloads\random guy 1.jpg" alt="Customer 1" height="120px" width="120px">
+      <p>"Absolutely love my new watch from Mens Phase! The quality is unmatched, and it complements my style perfectly. Highly recommend!"</p>
+    </div>
+    <div class="testimonial-item">
+      <img src="C:\Users\smm90\Downloads\random guy 2.jpg" alt="Customer 2">
+      <p>"These shoes are not only stylish but also incredibly comfortable. I wear them everywhere!"</p>
+    </div>
+    <div class="testimonial-item">
+      <img src="C:\Users\smm90\Downloads\random guy 3.jpg" alt="Customer 3" height="120px" width="120px">
+      <p>"Best sunglasses I've ever owned. They are lightweight, durable, and the design is just stunning!"</p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Mens Phase. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Scroll-based Animations using IntersectionObserver for performance
+    const options = {
+      root: null, // viewport as root
+      threshold: 0.1 // element needs to be 10% visible to trigger
+    };
+
+    const elementsToAnimate = document.querySelectorAll('.product, .testimonial-item');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    elementsToAnimate.forEach(element => observer.observe(element));
+  </script>
+
+</body>
+
+</html>
